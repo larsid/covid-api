@@ -1,0 +1,6 @@
+from api.controllers.create_user import CreateUserController
+from api.controllers.get_user import GetUserByIDController
+from api.controllers.get_users import GetAllUsersController
+from api.controllers.get_sickest_users import GetSickestUsersController
+from api.controllers.remove_user import RemoveUserController
+from api.controllers.update_user import UpdateUserController
