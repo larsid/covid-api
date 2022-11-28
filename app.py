@@ -29,7 +29,7 @@ def index():
     return jsonify({'data': 'Ok'}), 200
 
 
-@app.route('/users/<int:user_id>', methods=['GET'])
+@app.route('/users/<int:id>', methods=['GET'])
 def get_user(id: int):
     controller = GetUserByIDController(id, repository)
     return make_response(controller, request)
