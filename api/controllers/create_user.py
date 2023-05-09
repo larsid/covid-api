@@ -1,4 +1,4 @@
-from api.exceptions import BadRequest
+from api.exceptions import BadRequestException
 from api.helpers import (
     bad_request, created, error, internal_server_error, validate_required_params
 )
@@ -27,7 +27,7 @@ class CreateUserController(Controller):
           
             return created({'data': user.to_dict})
         
-        except BadRequest as ex:
+        except BadRequestException as ex:
             return bad_request(error(f'{ex}'))
         except Exception as ex:
             return internal_server_error(error(f'{ex}'))

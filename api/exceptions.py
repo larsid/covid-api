@@ -1,5 +1,5 @@
-class BadRequest(Exception):
+class BadRequestException(Exception):
     pass
 
-class NotFound(Exception):
+class NotFoundException(Exception):
     pass

@@ -1,4 +1,4 @@
-from api.exceptions import BadRequest, NotFound
+from api.exceptions import BadRequestException, NotFoundException
 from api.helpers import (
     bad_request, error, internal_server_error, not_found, success, validate_required_params
 )
@@ -20,15 +20,15 @@ class UpdateUserController(Controller):
             validate_required_params(request, required_params)
 
             if(self.repository.get_user_by_id(self.id) is None):
-                raise NotFound('User not found')
+                raise NotFoundException('User not found')
             
             user = UserModel(id=self.id, **request.body)
             self.repository.update_user(user)
             return success({'data': 'User updated'})
         
-        except BadRequest as ex:
+        except BadRequestException as ex:
             return bad_request(error(f'{ex}'))
-        except NotFound as ex:
+        except NotFoundException as ex:
             return not_found(error(f'{ex}'))
         except Exception as ex:
             return internal_server_error(error(f'{ex}'))

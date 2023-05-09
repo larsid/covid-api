@@ -2,7 +2,7 @@ from flask.wrappers import Request
 
 from typing import Any, Dict, List
 
-from api.exceptions import BadRequest
+from api.exceptions import BadRequestException
 from api.protocols import HttpRequest, HttpResponse
 
 
@@ -28,7 +28,7 @@ def success(body: Dict[str, Any]) -> HttpResponse:
 def validate_required_params(request: HttpRequest, params: List[str]):
     for param in params:
         if(request.get(param) is None):
-            raise BadRequest(f'Missing param {param}')
+            raise BadRequestException(f'Missing param {param}')
 
 
 def parse_request(request: Request) -> HttpRequest:
