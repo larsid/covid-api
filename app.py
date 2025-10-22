@@ -14,7 +14,7 @@ from api.protocols import Controller
 
 
 app        = Flask(__name__)
-cors       = CORS(app)
+cors       = CORS(app, origins=['*'])
 repository = UsersRepository()
 lock       = Lock()
 
